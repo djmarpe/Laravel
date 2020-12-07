@@ -13,6 +13,10 @@
             $mensaje = session()->get('numOculto');
             echo $mensaje;
         }
+        if (session()->has('mensaje')) {
+            $mensaje2 = session()->get('mensaje');
+            echo $mensaje2;
+        }
         ?>
         <form action="adivinar" method="POST" name="formulario">
             {{ csrf_field() }}

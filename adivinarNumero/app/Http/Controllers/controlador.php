@@ -9,11 +9,9 @@ class controlador extends Controller {
     public function recogerNum(Request $req) {
         if (session()->has('numOculto')) { //Si existe -> isset
             $numOculto = session()->get('numOculto');
-            var_dump($numOculto);
             echo 'El número oculto vale: ' . $numOculto;
         } else {
-            $numOculto = random_int(1, 50);
-            var_dump($numOculto);
+            $numOculto = rand(1, 10);
             session()->put('numOculto', $numOculto);
         }
 
@@ -21,9 +19,9 @@ class controlador extends Controller {
         if ($numPrueba == $numOculto) {
             return view('exito');
         } else {
-            return view('indice');
             $msg = "Fallaste, vuelve a intentarlo";
             session()->put('mensaje', $msg);
+            return view('indice');
         }
     }
 
