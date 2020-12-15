@@ -1,11 +1,14 @@
 <?php
+
 namespace App\Clases;
+
 /**
  * Description of Usuario
  *
  * @author alejandro
  */
 class Usuario {
+
     private $dni;
     private $nombre;
     private $apellidos;
@@ -13,7 +16,7 @@ class Usuario {
     private $contra;
     private $activado;
     private $roles;
-    
+
     function __construct() {
         $this->dni = '';
         $this->nombre = '';
@@ -71,13 +74,17 @@ class Usuario {
     function setActivado($activado): void {
         $this->activado = $activado;
     }
-    
+
     function getRoles() {
         return $this->roles;
     }
 
-    public function addRol($rol) {
+    function addRol($rol) {
         $this->roles[] = $rol;
+    }
+
+    function getRolSize() {
+        return sizeof($this->roles);
     }
 
 }

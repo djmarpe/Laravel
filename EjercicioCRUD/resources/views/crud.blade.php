@@ -112,5 +112,12 @@
             </form>
         </tr>
     </table>
+
+    <hr style="background-color: black; border: 5px double black;">
+
+    <form action="cerrarSesion" name="form_cerrarSesion" method="POST">
+        {{ csrf_field() }}
+        <input type="submit" name="cerrarSesion" value="Cerrar Sesión">
+    </form>
 </body>
 </html>

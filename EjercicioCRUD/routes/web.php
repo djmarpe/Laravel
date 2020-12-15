@@ -28,3 +28,5 @@ Route::post('volverSeleccion','controlador@volverSeleccion');
 Route::post('devolverCoche','controlador@devolverCoche');
 
 Route::post('alquilarCoche','controlador@alquilarCoche');
+
+Route::post('cerrarSesion','controlador@cerrarSesion');

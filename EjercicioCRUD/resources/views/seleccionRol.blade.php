@@ -13,9 +13,9 @@
         ?>
 
         <h2>Bienvenido: <?= $usuario->getNombre() . '&nbsp;' . $usuario->getApellidos() ?></h2>
-        
+
         <hr style="background-color: black; border: 5px double black;">
-        
+
         <form action="selecionarRol" name="from_seleccionRol" method="POST">
             {{ csrf_field() }}
             Iniciar como:
@@ -24,6 +24,13 @@
                 <option value="administrador">Administrador</option>
             </select>
             <input type="submit" name="continuar" value="Continuar">
+        </form>
+        
+        <hr style="background-color: black; border: 5px double black;">
+
+        <form action="cerrarSesion" name="form_cerrarSesion" method="POST">
+            {{ csrf_field() }}
+            <input type="submit" name="cerrarSesion" value="Cerrar Sesión">
         </form>
 
     </body>
