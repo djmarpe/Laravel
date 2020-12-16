@@ -20,12 +20,19 @@
 
         <hr style="background-color: black; border: 5px double black;">
 
-        <form action="volverSeleccion" name="form_volverSeleccion" method="POST">
-            {{ csrf_field() }}
-            <input type="submit" name="volverSeleccion" value="Volver a selección de rol">
-        </form>
+        <?php
+        //Si el usuario tiene mas de un rol, le damos la opción de poder cambiar de rol
+        if ($usuario->getRolSize() > 1) {
+            ?>
+            <form action="volverSeleccion" name="form_volverSeleccion" method="POST">
+                {{ csrf_field() }}
+                <input type="submit" name="volverSeleccion" value="Volver a selección de rol">
+            </form>
 
-        <hr style="background-color: black; border: 5px double black;">
+            <hr style="background-color: black; border: 5px double black;">
+            <?php
+        }
+        ?>
 
         <table>
             <tr>
