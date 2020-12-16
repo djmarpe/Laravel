@@ -15,7 +15,7 @@ class controlador extends Controller {
         $email = $req->get('email');
         $password = $req->get('password');
 
-        $usuario = \DB::select("Select Persona.Nombre, Persona.Apellidos, Persona.DNI, Persona.Email, Persona.Contra, Persona.Activado, Rol.Rol from Persona, Rol, AsignacionRol where Persona.Email = ?", [$email], " and Persona.Contra = ?", [$password], " and AsignacionRol.DNI = Persona.DNI and AsignacionRol.idRol=Rol.idRol");
+        $usuario = \DB::select("Select Persona.Nombre, Persona.Apellidos, Persona.DNI, Persona.Email, Persona.Contra, Persona.Activado, Rol.Rol from Persona, Rol, AsignacionRol where Persona.Email = '" . $email . "' and Persona.Contra = '" . $password . "' and AsignacionRol.DNI = Persona.DNI and AsignacionRol.idRol=Rol.idRol");
 //        $usuario = \DB::table('Persona','Rol','AsignacionRol')
 //          ->select('Persona.Nombre', 'Persona.Apellidos', 'Persona.DNI', 'Persona.Email', 'Persona.Contra', 'Persona.Activado', 'Rol.Rol')
 //          ->where('Persona.Email', '=', [$email])
@@ -67,7 +67,7 @@ class controlador extends Controller {
     //**************************************************************************
     function cargarListaUsuarios() {
         //$listaUsuarios = \DB::select("SELECT * FROM Persona");
-        $listaUsuarios =\DB::table('Persona')->get();
+        $listaUsuarios = \DB::table('Persona')->get();
 
         $usuarios = [];
 
@@ -227,7 +227,6 @@ class controlador extends Controller {
         }
     }
 
-    
     //**************************************************************************
     //***************** Función devolver coche *********************************
     //**************************************************************************
@@ -237,7 +236,7 @@ class controlador extends Controller {
         $marca = $req->get('marca');
         $modelo = $req->get('modelo');
 
-        if (\DB::delete("Delete from Alquilado where DNI = ?", [$usuarioLogin->getDni()], " AND Matricula = ?", [$matricula])) {
+        if (\DB::delete("Delete from Alquilado where DNI = '" . $usuarioLogin->getDni() . "' AND Matricula = '" . $matricula . "'")) {
             $this->cargarCochesAlquilados($usuarioLogin->getDni());
             $this->cargarCochesDisponibles();
             return view('usuario');
